@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: lightSaber
+  companyName: PolytechAngers
+  productName: NeonBlade
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -142,7 +142,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   bundleVersion: 0.1
   preloadedAssets:
-  - {fileID: 11400000, guid: bcd559ae445631347aa7834ffbacbb28, type: 2}
+  - {fileID: 0}
   - {fileID: 2242374295370620313, guid: 3ac56e7b71738e343b5e9763e306b114, type: 2}
   - {fileID: 11400000, guid: 24df3214a13da5149a4572c233e4d692, type: 2}
   metroInputSource: 0
