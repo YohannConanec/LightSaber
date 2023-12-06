@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class DestroyObjects : MonoBehaviour
 {
+    public AudioSource audioSource;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("ObjectToHit"))
         {
-            //print(other.gameObject.name);
             Destroy(other.gameObject);
+            //print(other.gameObject.name);
+            if(this.CompareTag("Blade")){
+                audioSource.Play();
+                GlobalScore.Score += 1;
+                Debug.Log(GlobalScore.Score);
+            }
+            
         }
     }
 }
