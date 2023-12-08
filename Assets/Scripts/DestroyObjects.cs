@@ -8,16 +8,33 @@ public class DestroyObjects : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("ObjectToHit"))
         {
-            Destroy(other.gameObject);
-            //print(other.gameObject.name);
-            if(this.CompareTag("Blade")){
-                audioSource.Play();
-                GlobalScore.Score += 1;
-                Debug.Log(GlobalScore.Score);
+            if (this.CompareTag("BladeLeft") || this.CompareTag("BladeRight"))
+            {
+                bool isLeft = other.GetComponent<DestroyableObject>().isLeft;
+                if ((isLeft && this.CompareTag("BladeLeft")) || (!isLeft && this.CompareTag("BladeRight")))
+                {
+                    Destroy(other.gameObject);
+                    audioSource.Play();
+                    GlobalScore.Score += 1;
+                    Debug.Log(GlobalScore.Score);
+                }
+
             }
-            
+            else
+            {
+                Destroy(other.gameObject);
+                if (this.CompareTag("Blade"))
+                {
+                    audioSource.Play();
+                    GlobalScore.Score += 1;
+                    Debug.Log(GlobalScore.Score);
+                }
+
+            }
         }
+
     }
 }
