@@ -15,5 +15,4 @@ public class GlobalScore : MonoBehaviour
         scoreText.text = "Score: " + Score;
     }
 
-
 }
