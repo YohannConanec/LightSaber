@@ -121,7 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 354784851858761279}
 --- !u!82 &354784851858761279
-AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
