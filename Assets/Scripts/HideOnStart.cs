@@ -7,6 +7,7 @@ public class HideOnStart : MonoBehaviour
     void Awake()
     {
         this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        print("objects hidden");
     }
 
  
