@@ -16,7 +16,11 @@ public class DestroyObjects : MonoBehaviour
                 bool isLeft = other.GetComponent<DestroyableObject>().isLeft;
                 if ((isLeft && this.CompareTag("BladeLeft")) || (!isLeft && this.CompareTag("BladeRight")))
                 {
-                    Destroy(other.gameObject);
+                    var particles = isLeft ? GameObject.Find("fire_pink").GetComponent<ParticleSystem>() : GameObject.Find("fire_blue").GetComponent<ParticleSystem>();
+                    particles.transform.position = other.transform.position;
+                    particles.Play();
+                    Destroy(other.gameObject, particles.main.duration);
+                    //Destroy(other.gameObject);
                     audioSource.Play();
                     GlobalScore.Score += 1;
                     Debug.Log(GlobalScore.Score);
