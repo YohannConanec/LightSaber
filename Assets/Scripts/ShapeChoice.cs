@@ -18,10 +18,11 @@ public class ShapeChoice : MonoBehaviour
     [SerializeField] private GameObject PrefabTorus;
 
 
-    [SerializeField] Shape chosenShape = new Shape();
+    [SerializeField] public Shape chosenShape = new Shape();
 
     private void Start()
     {
+        
         switch (chosenShape)
         {
             case Shape.Cube:
@@ -45,7 +46,10 @@ public class ShapeChoice : MonoBehaviour
                 torus.transform.parent = this.transform;
                 break;
         }
+        
     }
+
+
 
 
 }
