@@ -32,8 +32,6 @@ public class AddObjects : MonoBehaviour
     private Vector3 objPoseL;
     private Vector3 objPoseR;
 
-    private bool iterationL = false;
-    private bool iterationR = true;
 
     private string pathJSON = "Assets/Scripts/JSON/";
 
@@ -43,33 +41,23 @@ public class AddObjects : MonoBehaviour
 
         if (left) //LEFT BUTTON
         {
-            iterationL = !iterationL;
-            if (iterationL) //s'applique un clic sur deux
-            {
-                objPoseL = new Vector3(wallcreaL.position.x, 1, hitzone.position.z);
-                var newObject = Instantiate(emptyObject, objPoseL, Quaternion.identity);
-                newObject.transform.parent = parentLeft.gameObject.transform;
+            objPoseL = new Vector3(wallcreaL.position.x, 1, hitzone.position.z);
+            var newObject = Instantiate(emptyObject, objPoseL, Quaternion.identity);
+            newObject.transform.parent = parentLeft.gameObject.transform;
   
-                //add newObject.transform.position into JSON file :
-                SavePositionToJson(pathJSON + "allObjL.json", newObject.transform.localPosition);
-
-
-            }
+            //add newObject.transform.position into JSON file :
+            SavePositionToJson(pathJSON + "allObjL.json", newObject.transform.localPosition);
             
         }
         else //RIGHT BUTTON
         {
-            iterationR = !iterationR;
-            if (iterationR) //s'applique un clic sur deux
-            {
-                objPoseR = new Vector3(wallcreaR.position.x, 1, hitzone.position.z);
-                var newObject = Instantiate(emptyObject, objPoseR, Quaternion.identity);
-                newObject.transform.parent = parentRight.gameObject.transform;
 
-                //add newObject.transform.position into JSON file : 
-                SavePositionToJson(pathJSON + "allObjR.json", newObject.transform.localPosition);
+            objPoseR = new Vector3(wallcreaR.position.x, 1, hitzone.position.z);
+            var newObject = Instantiate(emptyObject, objPoseR, Quaternion.identity);
+            newObject.transform.parent = parentRight.gameObject.transform;
 
-            }
+            //add newObject.transform.position into JSON file : 
+            SavePositionToJson(pathJSON + "allObjR.json", newObject.transform.localPosition);
             
         }
        
@@ -91,6 +79,8 @@ public class AddObjects : MonoBehaviour
             var newObject = Instantiate(emptyObject, new Vector3(objData.x, objData.y, objData.z), Quaternion.identity);
             newObject.transform.parent = parentRight.gameObject.transform;
         }
+
+        print("objects inserted");
 
     }
 
