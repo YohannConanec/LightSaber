@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3267965110402001154}
   - component: {fileID: 4295521625311853980}
   - component: {fileID: 4295521625311854048}
+  - component: {fileID: -5224792974150500373}
   m_Layer: 0
   m_Name: sphere_pink
   m_TagString: ObjectToHit
@@ -146,3 +147,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af55033acd582f44aa919f9d33acd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5224792974150500373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267965110402001155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e90e903cfe7244ba3a0acbfff2a9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeft: 0
+  matleft: {fileID: 2100000, guid: 9baee425f6ef37b4f85995a85b70ea84, type: 2}
+  matright: {fileID: 2100000, guid: 062844fbfe0a09a4fa3122e6422a15c7, type: 2}
