@@ -38,7 +38,7 @@ public class DestroyObjects : MonoBehaviour
         }
         else if (other.CompareTag("MenuPlay"))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("FirstSong");
         }
         else if (other.CompareTag("MenuQuit"))
         {

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 354784851858761279}
   m_Layer: 0
   m_Name: blade_blue
-  m_TagString: BladeRight
+  m_TagString: BladeLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
