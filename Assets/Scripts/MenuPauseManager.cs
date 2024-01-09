@@ -17,4 +17,13 @@ public class MenuPauseManager : MonoBehaviour
     {
         
     }
+     public void PauseOn(){
+        buzzer.SetActive(false);
+        menuPause.SetActive(true);
+    }
+    public void PauseOff(){
+        buzzer.SetActive(true);
+        menuPause.SetActive(false);
+    }
+    
 }
