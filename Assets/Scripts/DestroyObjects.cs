@@ -20,6 +20,7 @@ public class DestroyObjects : MonoBehaviour
                     var particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
                     particles.transform.position = other.transform.position;
                     particles.Play();
+                    Vib();
                     audioSource.Play();
                     Destroy(other.gameObject,particles.main.duration);
                     //Destroy(other.gameObject);
@@ -44,5 +45,19 @@ public class DestroyObjects : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    public void Vib()
+    {
+        Invoke("startVib", .1f);
+        Invoke("stopVib", .2f);
+    }
+    public void startVib()
+    {
+        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+    }
+    public void stopVib()
+    {
+        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
     }
 }
