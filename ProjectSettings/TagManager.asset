@@ -7,6 +7,10 @@ TagManager:
   - ObjectToHit
   - BladeRight
   - BladeLeft
+  - GoToPrincipal
+  - Resume
+  - Pause_Menu
+  - buzzer_pause
   layers:
   - Default
   - TransparentFX
