@@ -28,10 +28,17 @@ public class DestroyObjects : MonoBehaviour
                 }
 
             }
+        }else if(other.CompareTag("buzzer_pause")){
+            Debug.Log("buzzer_pause");
+            other.transform.parent.gameObject.SetActive(false);
+            GameObject manager=GameObject.FindGameObjectsWithTag("MenuPauseManager")[0];
+
+            manager.GetComponent<MenuPauseManager>().menuPause.SetActive(true);
+
         }
         else if (other.CompareTag("MenuPlay"))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("FirstSong");
         }
         else if (other.CompareTag("MenuQuit"))
         {
