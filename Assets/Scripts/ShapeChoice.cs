@@ -12,10 +12,10 @@ public enum Shape
 
 public class ShapeChoice : MonoBehaviour
 {
-    [SerializeField] private GameObject PrefabCube;
-    [SerializeField] private GameObject PrefabCone;
-    [SerializeField] private GameObject PrefabSphere;
-    [SerializeField] private GameObject PrefabTorus;
+    public GameObject PrefabCube;
+    public GameObject PrefabCone;
+    public GameObject PrefabSphere;
+    public GameObject PrefabTorus;
 
 
     [SerializeField] public Shape chosenShape = new Shape();
