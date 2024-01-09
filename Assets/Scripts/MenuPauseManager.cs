@@ -6,6 +6,7 @@ public class MenuPauseManager : MonoBehaviour
 {
     public GameObject buzzer; 
     public GameObject menuPause;
+    public GameObject song1;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +21,13 @@ public class MenuPauseManager : MonoBehaviour
      public void PauseOn(){
         buzzer.SetActive(false);
         menuPause.SetActive(true);
+        song1.GetComponent<LevelManager>().SetSpeed(0);
+
     }
     public void PauseOff(){
         buzzer.SetActive(true);
         menuPause.SetActive(false);
+        song1.GetComponent<LevelManager>().SetSpeed(4);
     }
     
 }
