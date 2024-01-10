@@ -17,8 +17,9 @@ public class ShapeChoice : MonoBehaviour
     public GameObject PrefabSphere;
     public GameObject PrefabTorus;
 
-
     [SerializeField] public Shape chosenShape = new Shape();
+
+    private float rotationSpeed = 5f;
 
     private void Start()
     {
@@ -48,8 +49,6 @@ public class ShapeChoice : MonoBehaviour
         }
         
     }
-
-
 
 
 }
