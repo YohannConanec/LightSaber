@@ -11,11 +11,11 @@ public class attacheBlade : MonoBehaviour
 
     private void Start()
     {
-        
+        OVRInput.Controller[] Controllers = OVRInput.GetConnectedControllers();
         // Assuming you have a way to get the hand GameObject (OVRHand, etc.)
         GameObject handObject = GetHandObject(); // Implement this according to your setup
 
-        if (handObject != null && bladePrefab != null)
+        if (handObject != null && bladePrefab != null && Controllers.Length > 0)
         {
             // Instantiate the prefab and make it a child of the hand
             GameObject prefabInstance = Instantiate(bladePrefab, handObject.transform);
@@ -28,6 +28,21 @@ public class attacheBlade : MonoBehaviour
                 }
             handObject.GetComponent<OVRMeshRenderer>().enabled = false;
         }
+
+        if (OVRInput.GetActiveController() == OVRInput.Controller.LTouch)
+        {
+            GameObject prefabInstance = Instantiate(bladePrefab, OVRInput.GetActiveController().transform);
+            prefabInstance.transform.localPosition = Vector3.zero;
+            prefabInstance.transform.localRotation = Quaternion.Euler(0f, 90f, -90f);
+        }
+
+        if (OVRInput.GetActiveController() == OVRInput.Controller.RTouch)
+        {
+            GameObject prefabInstance = Instantiate(bladePrefab, OVRInput.GetActiveController().transform);
+            prefabInstance.transform.localPosition = Vector3.zero;
+            prefabInstance.transform.localRotation = Quaternion.Euler(180f, 90f, 90f);
+        }
+   
     }
 
     // Implement the method to get the hand object based on your setup
