@@ -22,11 +22,12 @@ public class DestroyObjects : MonoBehaviour
                     particles.Play();
                     audioSource.Play();
                     Destroy(other.gameObject,particles.main.duration);
-                    //Destroy(other.gameObject);
                     GlobalScore.Score += 1;
-                    Debug.Log(GlobalScore.Score);
                 }
-
+            }
+            else
+            {
+                Destroy(other.gameObject);
             }
         }else if(other.CompareTag("buzzer_pause")){
             Debug.Log("buzzer_pause");
