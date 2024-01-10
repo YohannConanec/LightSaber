@@ -19,6 +19,7 @@ public class DestroyObjects : MonoBehaviour
                 {
                     var particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
                     particles.transform.position = other.transform.position;
+                    Destroy(other.gameObject/*,particles.main.duration*/);
                     particles.Play();
                     if(isLeft){
                         VibL();
@@ -26,7 +27,6 @@ public class DestroyObjects : MonoBehaviour
                         VibR();
                     }
                     audioSource.Play();
-                    Destroy(other.gameObject,particles.main.duration);
                     GlobalScore.Score += 1;
                 }
             }
@@ -54,8 +54,8 @@ public class DestroyObjects : MonoBehaviour
 
     public void VibR()
     {
-        Invoke("startVib", .1f);
-        Invoke("stopVib", .1f);
+        Invoke("startVibR", .1f);
+        Invoke("stopVibR", .1f);
     }
     public void startVibR()
     {
@@ -67,8 +67,8 @@ public class DestroyObjects : MonoBehaviour
     }
      public void VibL()
     {
-        Invoke("startVib", .1f);
-        Invoke("stopVib", .1f);
+        Invoke("startVibL", .1f);
+        Invoke("stopVibL", .1f);
     }
     public void startVibL()
     {
