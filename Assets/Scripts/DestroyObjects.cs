@@ -21,14 +21,17 @@ public class DestroyObjects : MonoBehaviour
                     bool isLeft = other.GetComponent<DestroyableObject>().isLeft;
                     if ((isLeft && this.CompareTag("BladeLeft")) || (!isLeft && this.CompareTag("BladeRight")))
                     {
-                        var particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
-                        particles.transform.position = other.transform.position;
-                        particles.Play();
-                        audioSource.Play();
-                        Destroy(other.gameObject, particles.main.duration);
-                        //Destroy(other.gameObject);
-                        GlobalScore.Score += 1;
-                        Debug.Log(GlobalScore.Score);
+                    var particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
+                    particles.transform.position = other.transform.position;
+                    Destroy(other.gameObject/*,particles.main.duration*/);
+                    particles.Play();
+                    if(isLeft){
+                        VibL();
+                    }else{
+                        VibR();
+                    }
+                    audioSource.Play();
+                    GlobalScore.Score += 1;
                     }
                 }
                 break;
@@ -48,5 +51,32 @@ public class DestroyObjects : MonoBehaviour
                 Application.Quit();
                 break;
         }
+    }
+
+    public void VibR()
+    {
+        Invoke("startVibR", .1f);
+        Invoke("stopVibR", .1f);
+    }
+    public void startVibR()
+    {
+        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+    }
+    public void stopVibR()
+    {
+        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+    }
+     public void VibL()
+    {
+        Invoke("startVibL", .1f);
+        Invoke("stopVibL", .1f);
+    }
+    public void startVibL()
+    {
+        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
+    }
+    public void stopVibL()
+    {
+        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
     }
 }
