@@ -12,7 +12,7 @@ public class GlobalScore : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = "Score: " + Score;
+        scoreText.text = "Score\n" + Score;
     }
 
 }

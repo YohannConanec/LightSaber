@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6571855758136706343}
   - component: {fileID: 6571855758136706340}
   - component: {fileID: 6571855758136706346}
+  - component: {fileID: -5459612144324669140}
   m_Layer: 0
   m_Name: torus_pink
   m_TagString: ObjectToHit
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.3262204, z: 0.25}
+  m_LocalScale: {x: 0.25, y: 0.32622042, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -146,3 +147,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af55033acd582f44aa919f9d33acd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5459612144324669140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751935469825782922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e90e903cfe7244ba3a0acbfff2a9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeft: 0
+  matleft: {fileID: 2100000, guid: 9baee425f6ef37b4f85995a85b70ea84, type: 2}
+  matright: {fileID: 2100000, guid: 062844fbfe0a09a4fa3122e6422a15c7, type: 2}

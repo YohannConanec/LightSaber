@@ -24,7 +24,8 @@ public class attacheBlade : MonoBehaviour
             if(isLeftHand){
                 prefabInstance.transform.localRotation = Quaternion.Euler(0f, 0f, -90f);
             }else{
-            prefabInstance.transform.localRotation = Quaternion.Euler(180f, 0f, 90f);}
+                prefabInstance.transform.localRotation = Quaternion.Euler(180f, 0f, 90f);
+                }
             handObject.GetComponent<OVRMeshRenderer>().enabled = false;
         }
     }
@@ -48,26 +49,5 @@ public class attacheBlade : MonoBehaviour
 
         // Return null if no matching hand object is found
         return null;
-    }
-
-     // Check if the hand type matches the hand type of your prefab
-    private bool IsMatchingHandType(OVRHand handType)
-    {
-        // Implement this based on how you want to match the hand type
-        // For example, if your prefab is for the left hand, return handType == OVRHand.HandType.Left
-        // Adjust this logic based on your specific requirements
-        if (isLeftHand)
-        {
-            Debug.Log("isLeftHand");
-            Debug.Log((handType.GetType()));
-            //return handType == OVRHand.Hand.HandLeft;
-        }
-        else
-        {
-            //return handType.Hand == OVRHand.Hand.HandRight;
-        }
-        
-        Debug.Log("le game object est ",gameObject);
-        return gameObject ;
     }
 }
