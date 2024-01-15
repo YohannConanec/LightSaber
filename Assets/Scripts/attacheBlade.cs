@@ -13,10 +13,10 @@ public class attacheBlade : MonoBehaviour
     {
 
         GameObject handObject = GetHandObject(); // Implement this according to your setup
-        bool isControllerConnected = OVRInput.IsControllerConnected(OVRInput.Controller.Hands);
+        bool isHandTracking = OVRPlugin.GetHandTrackingEnabled();
 
 
-        if (handObject != null && bladePrefab != null && !isControllerConnected)
+        if (handObject != null && bladePrefab != null && isHandTracking)
         {
             // Instantiate the prefab and make it a child of the hand
             GameObject prefabInstance = Instantiate(bladePrefab, handObject.transform);
@@ -35,17 +35,11 @@ public class attacheBlade : MonoBehaviour
             }else{
                 controllerType = OVRInput.Controller.RTouch; // You can set this to RTouch for the right hand
             }
-            // Get the local position and rotation of the controller
-            Vector3 localControllerPosition = OVRInput.GetLocalControllerPosition(controllerType);
-            Quaternion localControllerRotation = OVRInput.GetLocalControllerRotation(controllerType);
+             // Get the transform of the controller
+            Transform controllerTransform = OVRInput.GetLocalControllerTransform(controllerType);
 
-            // Calculate the world position and rotation of the attached object
-            Vector3 worldPosition = transform.TransformPoint(localControllerPosition);
-            Quaternion worldRotation = transform.rotation * localControllerRotation;
-
-            // Update the position and rotation of the attached object
-            bladePrefab.transform.position = worldPosition;
-            bladePrefab.transform.rotation = worldRotation;
+            // Instantiate the prefab as a child of the controller
+            GameObject instantiatedPrefab = Instantiate(bladePrefab, controllerTransform);
         }
    
     }
