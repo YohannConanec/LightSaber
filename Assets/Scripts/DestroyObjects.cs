@@ -7,9 +7,11 @@ public class DestroyObjects : MonoBehaviour
 {
     public AudioSource audioSource;
     private GameObject manager;
+    private GameObject endgame;
     void Start()
     {
         manager=GameObject.FindGameObjectsWithTag("MenuManager")[0];
+        endgame=GameObject.FindGameObjectsWithTag("EndGame")[0];
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -36,6 +38,7 @@ public class DestroyObjects : MonoBehaviour
                 }
                 break;
             case "buzzer_pause":
+                Debug.Log("buzzer");
                 manager.GetComponent<MenuPauseManager>().PauseOn();
                 break;
             case "Resume":
@@ -50,6 +53,10 @@ public class DestroyObjects : MonoBehaviour
             case "MenuQuit":
                 Application.Quit();
                 break;
+            case "EndWall":
+            endgame.GetComponent<EndGame>().End()
+
+            break;
         }
     }
 
