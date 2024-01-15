@@ -7,13 +7,17 @@ public class attacheBlade : MonoBehaviour
     public GameObject bladePrefab; // Assign your prefab in the Unity Editor
     public bool isLeftHand = true; // Set this to true if the prefab is for the left hand, false if for the right hand
     public OVRInput.Controller controllerType;
+
+    private GameObject instantiatedPrefab;
+
+    bool isHandTracking;
        
 
     private void Start()
     {
 
         GameObject handObject = GetHandObject(); // Implement this according to your setup
-        bool isHandTracking = OVRPlugin.GetHandTrackingEnabled();
+        isHandTracking = OVRPlugin.GetHandTrackingEnabled();
 
 
         if (handObject != null && bladePrefab != null && isHandTracking)
@@ -35,11 +39,11 @@ public class attacheBlade : MonoBehaviour
             }else{
                 controllerType = OVRInput.Controller.RTouch; // You can set this to RTouch for the right hand
             }
-             // Get the transform of the controller
-            Transform controllerTransform = OVRInput.GetLocalControllerTransform(controllerType);
-
-            // Instantiate the prefab as a child of the controller
-            GameObject instantiatedPrefab = Instantiate(bladePrefab, controllerTransform);
+            
+            // Instantiate the prefab at the start
+            instantiatedPrefab = Instantiate(bladePrefab);
+            // Make the instantiated prefab a child of the controller
+            instantiatedPrefab.transform.parent = transform; 
         }
    
     }
@@ -63,5 +67,24 @@ public class attacheBlade : MonoBehaviour
 
         // Return null if no matching hand object is found
         return null;
+    }
+
+       void Update()
+    {
+        if(!isHandTracking){
+            // Update the position and rotation of the instantiated prefab based on the controller
+            Vector3 localControllerPosition = OVRInput.GetLocalControllerPosition(controllerType);
+            Quaternion localControllerRotation = OVRInput.GetLocalControllerRotation(controllerType);
+
+            Quaternion additionalRotation = Quaternion.Euler(180f, 0f, 0f);
+            localControllerRotation *= additionalRotation;
+
+            Vector3 additionalPositionOffset = new Vector3(-0.5f, 0f, 0f);
+            localControllerPosition += additionalPositionOffset;
+
+            instantiatedPrefab.transform.localPosition = localControllerPosition;
+            instantiatedPrefab.transform.localRotation = localControllerRotation;
+        }
+        
     }
 }
