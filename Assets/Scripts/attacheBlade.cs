@@ -6,16 +6,17 @@ public class attacheBlade : MonoBehaviour
 {
     public GameObject bladePrefab; // Assign your prefab in the Unity Editor
     public bool isLeftHand = true; // Set this to true if the prefab is for the left hand, false if for the right hand
-    
-    
+    public OVRInput.Controller controllerType;
+       
 
     private void Start()
     {
-        OVRInput.Controller[] Controllers = OVRInput.GetConnectedControllers();
-        // Assuming you have a way to get the hand GameObject (OVRHand, etc.)
-        GameObject handObject = GetHandObject(); // Implement this according to your setup
 
-        if (handObject != null && bladePrefab != null && Controllers.Length > 0)
+        GameObject handObject = GetHandObject(); // Implement this according to your setup
+        bool isControllerConnected = OVRInput.IsControllerConnected(OVRInput.Controller.Hands);
+
+
+        if (handObject != null && bladePrefab != null && !isControllerConnected)
         {
             // Instantiate the prefab and make it a child of the hand
             GameObject prefabInstance = Instantiate(bladePrefab, handObject.transform);
@@ -27,20 +28,24 @@ public class attacheBlade : MonoBehaviour
                 prefabInstance.transform.localRotation = Quaternion.Euler(180f, 0f, 90f);
                 }
             handObject.GetComponent<OVRMeshRenderer>().enabled = false;
-        }
 
-        if (OVRInput.GetActiveController() == OVRInput.Controller.LTouch)
-        {
-            GameObject prefabInstance = Instantiate(bladePrefab, OVRInput.GetActiveController().transform);
-            prefabInstance.transform.localPosition = Vector3.zero;
-            prefabInstance.transform.localRotation = Quaternion.Euler(0f, 90f, -90f);
-        }
+        }else{
+            if(isLeftHand){
+                controllerType = OVRInput.Controller.LTouch; // You can set this to RTouch for the right hand
+            }else{
+                controllerType = OVRInput.Controller.RTouch; // You can set this to RTouch for the right hand
+            }
+            // Get the local position and rotation of the controller
+            Vector3 localControllerPosition = OVRInput.GetLocalControllerPosition(controllerType);
+            Quaternion localControllerRotation = OVRInput.GetLocalControllerRotation(controllerType);
 
-        if (OVRInput.GetActiveController() == OVRInput.Controller.RTouch)
-        {
-            GameObject prefabInstance = Instantiate(bladePrefab, OVRInput.GetActiveController().transform);
-            prefabInstance.transform.localPosition = Vector3.zero;
-            prefabInstance.transform.localRotation = Quaternion.Euler(180f, 90f, 90f);
+            // Calculate the world position and rotation of the attached object
+            Vector3 worldPosition = transform.TransformPoint(localControllerPosition);
+            Quaternion worldRotation = transform.rotation * localControllerRotation;
+
+            // Update the position and rotation of the attached object
+            bladePrefab.transform.position = worldPosition;
+            bladePrefab.transform.rotation = worldRotation;
         }
    
     }
