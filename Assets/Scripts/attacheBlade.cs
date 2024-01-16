@@ -15,13 +15,22 @@ public class attacheBlade : MonoBehaviour
 
     private void Start()
     {
-
         GameObject handObject = GetHandObject(); // Implement this according to your setup
         isHandTracking = OVRPlugin.GetHandTrackingEnabled();
 
-
         if (handObject != null && bladePrefab != null && isHandTracking)
         {
+            GameObject balde_left = GameObject.Find("blade_blue");
+            if (balde_left != null)
+            {
+                balde_left.SetActive(false);
+            }
+            GameObject balde_right = GameObject.Find("blade_pink");
+            if (balde_right != null)
+            {
+                balde_right.SetActive(false);
+            }
+            
             // Instantiate the prefab and make it a child of the hand
             GameObject prefabInstance = Instantiate(bladePrefab, handObject.transform);
             // Optionally, adjust the position, rotation, and scale of the prefab to fit the hand
@@ -32,20 +41,8 @@ public class attacheBlade : MonoBehaviour
                 prefabInstance.transform.localRotation = Quaternion.Euler(180f, 0f, 90f);
                 }
             handObject.GetComponent<OVRMeshRenderer>().enabled = false;
-
-        }else{
-            if(isLeftHand){
-                controllerType = OVRInput.Controller.LTouch; // You can set this to RTouch for the right hand
-            }else{
-                controllerType = OVRInput.Controller.RTouch; // You can set this to RTouch for the right hand
-            }
-            
-            // Instantiate the prefab at the start
-            instantiatedPrefab = Instantiate(bladePrefab);
-            // Make the instantiated prefab a child of the controller
-            instantiatedPrefab.transform.parent = transform; 
         }
-   
+       
     }
 
     // Implement the method to get the hand object based on your setup
@@ -67,24 +64,5 @@ public class attacheBlade : MonoBehaviour
 
         // Return null if no matching hand object is found
         return null;
-    }
-
-       void Update()
-    {
-        if(!isHandTracking){
-            // Update the position and rotation of the instantiated prefab based on the controller
-            Vector3 localControllerPosition = OVRInput.GetLocalControllerPosition(controllerType);
-            Quaternion localControllerRotation = OVRInput.GetLocalControllerRotation(controllerType);
-
-            Quaternion additionalRotation = Quaternion.Euler(180f, 0f, 0f);
-            localControllerRotation *= additionalRotation;
-
-            Vector3 additionalPositionOffset = new Vector3(-0.5f, 0f, 0f);
-            localControllerPosition += additionalPositionOffset;
-
-            instantiatedPrefab.transform.localPosition = localControllerPosition;
-            instantiatedPrefab.transform.localRotation = localControllerRotation;
-        }
-        
     }
 }
