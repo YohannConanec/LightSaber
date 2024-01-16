@@ -55,7 +55,7 @@ public class DestroyObjects : MonoBehaviour
 
     public void VibR()
     {
-        Invoke("startVibR", .1f);
+        Invoke("startVibR", .0001f);
         Invoke("stopVibR", .1f);
     }
     public void startVibR()
@@ -68,8 +68,8 @@ public class DestroyObjects : MonoBehaviour
     }
      public void VibL()
     {
-        Invoke("startVibL", .1f);
-        Invoke("stopVibL", .1f);
+        Invoke("startVibL", .0001f);
+        Invoke("stopVibL", .15f);
     }
     public void startVibL()
     {
