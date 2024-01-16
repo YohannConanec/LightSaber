@@ -6,17 +6,31 @@ public class attacheBlade : MonoBehaviour
 {
     public GameObject bladePrefab; // Assign your prefab in the Unity Editor
     public bool isLeftHand = true; // Set this to true if the prefab is for the left hand, false if for the right hand
-    
-    
+    public OVRInput.Controller controllerType;
+
+    private GameObject instantiatedPrefab;
+
+    bool isHandTracking;
+       
 
     private void Start()
     {
-        
-        // Assuming you have a way to get the hand GameObject (OVRHand, etc.)
         GameObject handObject = GetHandObject(); // Implement this according to your setup
+        isHandTracking = OVRPlugin.GetHandTrackingEnabled();
 
-        if (handObject != null && bladePrefab != null)
+        if (handObject != null && bladePrefab != null && isHandTracking)
         {
+            GameObject balde_left = GameObject.Find("blade_blue");
+            if (balde_left != null)
+            {
+                balde_left.SetActive(false);
+            }
+            GameObject balde_right = GameObject.Find("blade_pink");
+            if (balde_right != null)
+            {
+                balde_right.SetActive(false);
+            }
+            
             // Instantiate the prefab and make it a child of the hand
             GameObject prefabInstance = Instantiate(bladePrefab, handObject.transform);
             // Optionally, adjust the position, rotation, and scale of the prefab to fit the hand
@@ -28,6 +42,7 @@ public class attacheBlade : MonoBehaviour
                 }
             handObject.GetComponent<OVRMeshRenderer>().enabled = false;
         }
+       
     }
 
     // Implement the method to get the hand object based on your setup

@@ -11,6 +11,7 @@ TagManager:
   - Resume
   - Pause_Menu
   - buzzer_pause
+  - MenuManager
   layers:
   - Default
   - TransparentFX
