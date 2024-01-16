@@ -8,7 +8,7 @@ public class Elevate : MonoBehaviour
     public float decalage_ressort = 0.02f; // Distance à laquelle l'objet doit redescendre
     public float initspeed = 0.01f; // Vitesse initiale de déplacement
     private Vector3 posOffset = new Vector3(); // Position initiale de l'objet
-    private int phase = 0; // Phase de déplacement
+    public int phase = 0; // Phase de déplacement
     private float speed; // Vitesse de déplacement
     private float initdeltaY; // Différence de hauteur initiale
 
@@ -33,15 +33,17 @@ public class Elevate : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z); // Déplace l'objet vers le haut
                 float delta = posOffset.y + decalage - transform.position.y; // Calcule la différence de hauteur actuelle
                 speed = initspeed * delta / initdeltaY; // Calcule la vitesse de déplacement en fonction de la différence de hauteur
-                if (speed < 0.0001f)
+                if (speed < 0.0003f)
                 {
-                    speed = 0.0001f; // Vitesse minimale pour éviter un arrêt complet
+                    speed = 0.0003f; // Vitesse minimale pour éviter un arrêt complet
                 }
             }
             else
             {
                 phase = 2; // Passe à la phase de descente
                 posOffset = transform.position; // Met à jour la position initiale pour la descente
+                initdeltaY = posOffset.y - decalage_ressort - transform.position.y; // Calcule la différence de hauteur initiale pour la descente
+                initspeed = initspeed/3; // Stocke la vitesse de déplacement pour la descente
             }
         }
         if (phase == 2)
@@ -51,7 +53,7 @@ public class Elevate : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z); // Déplace l'objet vers le bas
                 float delta = transform.position.y - posOffset.y - decalage_ressort; // Calcule la différence de hauteur actuelle
                 speed = initspeed * delta / initdeltaY; // Calcule la vitesse de déplacement en fonction de la différence de hauteur
-                if (speed < 0.0001f)
+                if (speed < 0.000f)
                 {
                     speed = 0.0001f; // Vitesse minimale pour éviter un arrêt complet
                 }
