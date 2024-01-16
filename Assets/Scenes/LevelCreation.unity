@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.028488245, g: 0.030358875, b: 0.06187974, a: 1}
+  m_IndirectSpecularColor: {r: 0.028360303, g: 0.03021498, b: 0.061522234, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -438,8 +438,8 @@ MonoBehaviour:
   wallcreaR: {fileID: 3427203954266642466}
   hitzone: {fileID: 666704165}
   emptyObject: {fileID: 5524622115556782554, guid: e64a7e98257c1f24f9f9d4cdb0f77afe, type: 3}
-  parentLeft: {fileID: 1206915472993762233}
-  parentRight: {fileID: 913916928001102513}
+  parentLeft: {fileID: 3738530662556775390}
+  parentRight: {fileID: 2463087096518016116}
 --- !u!4 &1829868346
 Transform:
   m_ObjectHideFlags: 0
@@ -715,15 +715,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7068757754204996112, guid: 42c28b4d13a3c6c4997242f30e89ae88, type: 3}
   m_PrefabInstance: {fileID: 2900780124102261074}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &913916928001102513 stripped
+--- !u!1001 &1552610273960629242
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238559109536015407, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220757444253320551, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+      propertyPath: m_Name
+      value: Song numero 0 (tuto)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+--- !u!1 &2463087096518016116 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7540653464204891048, guid: 42c28b4d13a3c6c4997242f30e89ae88, type: 3}
-  m_PrefabInstance: {fileID: 2900780124102261074}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1206915472993762233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8748947208362499074, guid: 42c28b4d13a3c6c4997242f30e89ae88, type: 3}
-  m_PrefabInstance: {fileID: 2900780124102261074}
+  m_CorrespondingSourceObject: {fileID: 795080032519084475, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+  m_PrefabInstance: {fileID: 1552610273960629242}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2900780124102261074
 PrefabInstance:
@@ -777,6 +829,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Song numero 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5469392557537215021, guid: 42c28b4d13a3c6c4997242f30e89ae88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -786,6 +842,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3837638101672456130, guid: 42c28b4d13a3c6c4997242f30e89ae88, type: 3}
   m_PrefabInstance: {fileID: 2900780124102261074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3738530662556775390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4296789379267353873, guid: e64424db8fd41bc4ab8352b30fa6efa4, type: 3}
+  m_PrefabInstance: {fileID: 1552610273960629242}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -797,3 +858,4 @@ SceneRoots:
   - {fileID: 666704165}
   - {fileID: 1829868346}
   - {fileID: 2900780124102261074}
+  - {fileID: 1552610273960629242}
