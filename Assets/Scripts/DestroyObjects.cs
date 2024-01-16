@@ -54,7 +54,11 @@ public class DestroyObjects : MonoBehaviour
                 Application.Quit();
                 break;
             case "EndWall":
-            endgame.GetComponent<EndGame>().End()
+            endgame.GetComponent<EndGame>().End();
+            break;
+            case "Retry":
+            GlobalScore.Score=0;
+            Application.LoadLevel(Application.loadedLevel);
 
             break;
         }

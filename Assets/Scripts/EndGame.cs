@@ -7,7 +7,7 @@ public class EndGame : MonoBehaviour
     public GameObject menu;
     public GameObject score;
 
-void End()
+ public void End()
     {
         menu.SetActive(true);
         score.GetComponent<GlobalScore>().end=true;
