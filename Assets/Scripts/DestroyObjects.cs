@@ -45,7 +45,8 @@ public class DestroyObjects : MonoBehaviour
                 SceneManager.LoadScene("Menu");
                 break;
             case "MenuPlay":
-                SceneManager.LoadScene("FirstSong");
+                GameObject.Find("animDown").GetComponent<AnimGoDown>().AnimMenuDown();
+                //SceneManager.LoadScene("FirstSong");
                 break;
             case "MenuQuit":
                 Application.Quit();
