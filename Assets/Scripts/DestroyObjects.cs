@@ -7,6 +7,7 @@ public class DestroyObjects : MonoBehaviour
 {
     public AudioSource audioSource;
     private GameObject manager;
+    private ParticleSystem particles;
     void Start()
     {
         manager=GameObject.FindGameObjectsWithTag("MenuManager")[0];
@@ -21,7 +22,7 @@ public class DestroyObjects : MonoBehaviour
                     bool isLeft = other.GetComponent<DestroyableObject>().isLeft;
                     if ((isLeft && this.CompareTag("BladeLeft")) || (!isLeft && this.CompareTag("BladeRight")))
                     {
-                    var particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
+                    particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
                     particles.transform.position = other.transform.position;
                     Destroy(other.gameObject/*,particles.main.duration*/);
                     particles.Play();
@@ -45,8 +46,13 @@ public class DestroyObjects : MonoBehaviour
                 SceneManager.LoadScene("Menu");
                 break;
             case "MenuPlay":
+                particles = GameObject.Find("fire_blue").GetComponent<ParticleSystem>();
+                particles.transform.position = other.transform.position;
+                particles.Play();
+                audioSource.Play();
+                GameObject.Find("cube_Play").SetActive(false);
+                GameObject.Find("cube_Quit").SetActive(false);
                 GameObject.Find("animDown").GetComponent<AnimGoDown>().AnimMenuDown();
-                //SceneManager.LoadScene("FirstSong");
                 break;
             case "MenuQuit":
                 Application.Quit();
