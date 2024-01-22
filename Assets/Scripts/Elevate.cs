@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Elevate : MonoBehaviour
 {
-    public float decalage = 0.02f; // Distance à laquelle l'objet doit s'élever
-    public float decalage_ressort = 0.02f; // Distance à laquelle l'objet doit redescendre
-    public float initspeed = 0.01f; // Vitesse initiale de déplacement
+    public float decalage = 1f; // Distance à laquelle l'objet doit s'élever
+    public float decalage_ressort = 0.2f; // Distance à laquelle l'objet doit redescendre
+    public float initspeed = 0.008f; // Vitesse initiale de déplacement
     private Vector3 posOffset = new Vector3(); // Position initiale de l'objet
     public int phase = 0; // Phase de déplacement
     private float speed; // Vitesse de déplacement

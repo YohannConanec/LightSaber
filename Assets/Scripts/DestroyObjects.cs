@@ -100,6 +100,10 @@ public class DestroyObjects : MonoBehaviour
                 GlobalScore.Score = 0;
                 Application.LoadLevel(Application.loadedLevel);
                 break;
+            case "SelectNiveauMenu":
+                int id=other.GetComponent<Id>().getId();
+                other.transform.parent.transform.parent.GetComponent<SelectMenu>().launchScene(id);
+                break;
         }
     }
 
