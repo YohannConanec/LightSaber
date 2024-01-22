@@ -12,6 +12,9 @@ TagManager:
   - Pause_Menu
   - buzzer_pause
   - MenuManager
+  - EndGame
+  - EndWall
+  - Retry
   layers:
   - Default
   - TransparentFX
