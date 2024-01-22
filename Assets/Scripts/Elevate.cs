@@ -40,7 +40,7 @@ public class Elevate : MonoBehaviour
             }
             else
             {
-                phase = 2; // Passe à la phase de descente
+                phase = 3; // Passe à la phase de descente
                 posOffset = transform.position; // Met à jour la position initiale pour la descente
                 initdeltaY = posOffset.y - decalage_ressort - transform.position.y; // Calcule la différence de hauteur initiale pour la descente
                 initspeed = initspeed/3; // Stocke la vitesse de déplacement pour la descente
@@ -48,7 +48,7 @@ public class Elevate : MonoBehaviour
         }
         if (phase == 2)
         {
-            if (transform.position.y > posOffset.y - decalage_ressort)
+            /*if (transform.position.y > posOffset.y - decalage_ressort)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z); // Déplace l'objet vers le bas
                 float delta = transform.position.y - posOffset.y - decalage_ressort; // Calcule la différence de hauteur actuelle
@@ -63,12 +63,17 @@ public class Elevate : MonoBehaviour
                 phase = 3; // Passe à la phase de fin de déplacement
                 gameObject.GetComponent<Floating>().SetPosOffset(transform.position); // Met à jour la position de référence pour le mouvement flottant
                 gameObject.GetComponent<Floating>().SetMoove(true); // Active le mouvement flottant
-            }
+            }*/
         }
     }
 
     public void StartMoove()
     {
         phase = 1; // Réinitialise la phase de déplacement
+    }
+
+    public int GetPhase()
+    {
+        return phase; // Retourne la phase de déplacement
     }
 }
