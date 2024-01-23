@@ -36,7 +36,7 @@ public class DestroyObjects : MonoBehaviour
                     {
                     particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
                     particles.transform.position = other.transform.position;
-                    Destroy(other.gameObject/*,particles.main.duration*/);
+                    Destroy(other.gameObject);
                     particles.Play();
                     if(isLeft){
                         VibL();
@@ -47,6 +47,8 @@ public class DestroyObjects : MonoBehaviour
                     GlobalScore.Score += 1;
 
                     }
+                }else{
+                    Destroy(other.gameObject);
                 }
                 break;
 
