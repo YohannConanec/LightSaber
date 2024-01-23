@@ -11,5 +11,7 @@ public class EndGame : MonoBehaviour
     {
         menu.SetActive(true);
         score.GetComponent<GlobalScore>().end=true;
+        GameObject.Find("buzzer").SetActive(false);
+        GameObject.Find("pause Menu").SetActive(false);
     }
 }

@@ -14,9 +14,14 @@ public class AnimGoDown : MonoBehaviour
     public float Ythreshold = -4.2f; //seuil altitude
     public float pisteAnimSpeed = 2.0f;
     public float Ypistetarget = 2f; 
+    private Transform _parentObj;
+    private int _id;
 
-    public void AnimMenuDown()
+
+    public void AnimMenuDown(Transform parentObj, int id)
     {
+        _parentObj = parentObj;
+        _id = id;   
         StartCoroutine(LaunchAnim());
     }
 
@@ -99,7 +104,10 @@ public class AnimGoDown : MonoBehaviour
         }
 
         piste.transform.position = targetPosition;
-        SceneManager.LoadScene("FirstSong");
+
+        //Load the level scene
+        //SceneManager.LoadScene("FirstSong");
+        _parentObj.GetComponent<SelectMenu>().launchScene(_id);
     }
     
 

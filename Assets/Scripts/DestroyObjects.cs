@@ -37,7 +37,7 @@ public class DestroyObjects : MonoBehaviour
                     {
                     particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
                     particles.transform.position = other.transform.position;
-                    Destroy(other.gameObject/*,particles.main.duration*/);
+                    Destroy(other.gameObject);
                     particles.Play();
                     if(isLeft){
                         VibL();
@@ -48,6 +48,8 @@ public class DestroyObjects : MonoBehaviour
                     GlobalScore.Score += 1;
 
                     }
+                }else{
+                    Destroy(other.gameObject);
                 }
             }
                 break;
@@ -80,7 +82,8 @@ public class DestroyObjects : MonoBehaviour
                 audioSource.Play();
                 GameObject.Find("cube_Play").SetActive(false);
                 GameObject.Find("cube_Quit").SetActive(false);
-                GameObject.Find("animDown").GetComponent<AnimGoDown>().AnimMenuDown();
+
+                GameObject.Find("Select song").GetComponent<Elevate>().StartMoove();
                 break;
 
             // Cas où l'objet a le tag "MenuQuit"
@@ -101,9 +104,24 @@ public class DestroyObjects : MonoBehaviour
                 GlobalScore.Score = 0;
                 Application.LoadLevel(Application.loadedLevel);
                 break;
+
             case "SelectNiveauMenu":
-                int id=other.GetComponent<Id>().getId();
-                other.transform.parent.transform.parent.GetComponent<SelectMenu>().launchScene(id);
+                if(GameObject.Find("Select song").GetComponent<Elevate>().GetPhase() == 3)
+                {
+                    int id=other.GetComponent<Id>().getId();
+
+                    //show particules
+                    particles = id == 0 ? GameObject.Find("fire_pink").GetComponent<ParticleSystem>() : GameObject.Find("fire_blue").GetComponent<ParticleSystem>();
+                    particles.transform.position = other.transform.position;
+                    particles.Play();
+                    audioSource.Play();
+
+                    //hide other cubes
+                    other.transform.parent.transform.parent.gameObject.SetActive(false);
+
+                    GameObject.Find("animDown").GetComponent<AnimGoDown>().AnimMenuDown(other.transform.parent.transform.parent, id);
+                }
+
                 break;
         }
     }

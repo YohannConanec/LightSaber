@@ -45,6 +45,7 @@ public class Elevate : MonoBehaviour
                 gameObject.GetComponent<Floating>().SetMoove(true); // Active le mouvement flottant
 
             }
+
         }
         
     }
@@ -52,5 +53,10 @@ public class Elevate : MonoBehaviour
     public void StartMoove()
     {
         phase = 1; // Réinitialise la phase de déplacement
+    }
+
+    public int GetPhase()
+    {
+        return phase; // Retourne la phase de déplacement
     }
 }

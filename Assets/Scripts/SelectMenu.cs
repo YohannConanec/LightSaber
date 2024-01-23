@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectMenu : MonoBehaviour
 {
     public void launchScene(int idscene){
         switch(idscene){
             case 0:
+                SceneManager.LoadScene("TutoSong");
                 Debug.Log("Scene tuto");
                 break;
             case 1:
+                SceneManager.LoadScene("FirstSong");
                 Debug.Log("Scene 1");
                 break;
             case 2:

@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5237714087853810788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +170,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f93b01b86b29fa409519929e47129d2, type: 2}
+  m_sharedMaterial: {fileID: -4139223835721892439, guid: 8f93b01b86b29fa409519929e47129d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -195,8 +195,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7
-  m_fontSizeBase: 7
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -281,4 +281,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4aac1427501c7949b4fe97101d025fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  end: 0
   scoreText: {fileID: 3182219949640001851}

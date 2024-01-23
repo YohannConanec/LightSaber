@@ -13,7 +13,7 @@ public class AnimWallEditor : Editor
 
         if (GUILayout.Button("Launch Anim")) 
         {
-            anim.AnimMenuDown();
+            //anim.AnimMenuDown();
         }
 
 
