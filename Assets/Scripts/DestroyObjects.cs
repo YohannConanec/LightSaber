@@ -26,6 +26,7 @@ public class DestroyObjects : MonoBehaviour
         {
             // Cas où l'objet a le tag "ObjectToHit"
             case "ObjectToHit":
+            if(manager.GetComponent<MenuPauseManager>().GetPause()==false){
                 if (this.CompareTag("BladeLeft") || this.CompareTag("BladeRight"))
                 {
                     // Vérifie si cette lame touche l'objet de gauche ou de droite
@@ -50,7 +51,9 @@ public class DestroyObjects : MonoBehaviour
                 }else{
                     Destroy(other.gameObject);
                 }
+            }
                 break;
+            
 
             // Cas où l'objet a le tag "buzzer_pause"
             case "buzzer_pause":

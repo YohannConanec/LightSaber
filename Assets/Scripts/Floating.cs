@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Floating : MonoBehaviour
 {
-    private float amplitude = 0.02f; // Amplitude du mouvement de flottement
-    private float frequency = 1f; // Fréquence du mouvement de flottement
+    public float amplitude = 0.08f; // Amplitude du mouvement de flottement
+    public float speed = 0.0001f; // Vitesse du mouvement de flottement
     private Vector3 posOffset = new Vector3(); // Position initiale de l'objet
     private bool moove=true; // Indicateur pour activer ou désactiver le mouvement
+    private bool phase= true; // indicateur pour la phase de montée ou de descente
 
     // Start est appelée avant le premier frame
     void Start()
@@ -20,9 +21,34 @@ public class Floating : MonoBehaviour
     {
         if(moove)
         {
-            // Applique un mouvement de flottement à l'objet en utilisant la fonction sinus
-            // pour créer une variation verticale de la position en fonction du temps
-            transform.position = posOffset + new Vector3(0, Mathf.Sin(Time.time * frequency) * amplitude, 0);  
+            // Si l'objet est en phase de montée
+            if (phase)
+            {
+                // Si l'objet est en dessous de la position initiale
+                if (transform.position.y < posOffset.y)
+                {
+                    // Déplace l'objet vers le haut
+                    transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
+                }
+                else
+                {
+                    phase = false; // Passe à la phase de descente
+                }
+            }
+            // Si l'objet est en phase de descente
+            else
+            {
+                // Si l'objet est au dessus de la position initiale
+                if (transform.position.y > posOffset.y - amplitude)
+                {
+                    // Déplace l'objet vers le bas
+                    transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z);
+                }
+                else
+                {
+                    phase = true; // Passe à la phase de montée
+                }
+            }  
         }
     }
 
