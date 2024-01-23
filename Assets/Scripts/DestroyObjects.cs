@@ -9,8 +9,8 @@ public class DestroyObjects : MonoBehaviour
     public AudioSource audioSource;
     private GameObject manager;
     private GameObject endgame;
+    private ParticleSystem particles;
 
-    // Méthode appelée au démarrage du script
     void Start()
     {
         // Recherche des objets avec les tags "MenuManager" et "EndGame"
@@ -34,25 +34,18 @@ public class DestroyObjects : MonoBehaviour
                     // Vérifie si la lame correspond à la direction de l'objet à toucher
                     if ((isLeft && this.CompareTag("BladeLeft")) || (!isLeft && this.CompareTag("BladeRight")))
                     {
-                        // Obtient les particules associées à la couleur de l'objet touché
-                        var particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
-                        
-                        // Positionne les particules sur l'objet touché, détruit l'objet et active les particules
-                        particles.transform.position = other.transform.position;
-                        Destroy(other.gameObject);
-                        particles.Play();
+                    particles = isLeft ? GameObject.Find("fire_blue").GetComponent<ParticleSystem>() : GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
+                    particles.transform.position = other.transform.position;
+                    Destroy(other.gameObject/*,particles.main.duration*/);
+                    particles.Play();
+                    if(isLeft){
+                        VibL();
+                    }else{
+                        VibR();
+                    }
+                    audioSource.Play();
+                    GlobalScore.Score += 1;
 
-                        // Active la vibration du contrôleur gauche ou droit, joue un son et met à jour le score global
-                        if (isLeft)
-                        {
-                            VibL();
-                        }
-                        else
-                        {
-                            VibR();
-                        }
-                        audioSource.Play();
-                        GlobalScore.Score += 1;
                     }
                 }
                 break;
@@ -78,8 +71,13 @@ public class DestroyObjects : MonoBehaviour
 
             // Cas où l'objet a le tag "MenuPlay"
             case "MenuPlay":
-                // Charge la scène de la première chanson
-                SceneManager.LoadScene("FirstSong");
+                particles = GameObject.Find("fire_blue").GetComponent<ParticleSystem>();
+                particles.transform.position = other.transform.position;
+                particles.Play();
+                audioSource.Play();
+                GameObject.Find("cube_Play").SetActive(false);
+                GameObject.Find("cube_Quit").SetActive(false);
+                GameObject.Find("animDown").GetComponent<AnimGoDown>().AnimMenuDown();
                 break;
 
             // Cas où l'objet a le tag "MenuQuit"
@@ -110,7 +108,7 @@ public class DestroyObjects : MonoBehaviour
     // Méthode pour activer la vibration du contrôleur droit
     public void VibR()
     {
-        Invoke("startVibR", .1f);
+        Invoke("startVibR", .0001f);
         Invoke("stopVibR", .1f);
     }
 
@@ -129,8 +127,8 @@ public class DestroyObjects : MonoBehaviour
     // Méthode pour activer la vibration du contrôleur gauche
     public void VibL()
     {
-        Invoke("startVibL", .1f);
-        Invoke("stopVibL", .1f);
+        Invoke("startVibL", .0001f);
+        Invoke("stopVibL", .15f);
     }
 
     // Méthode pour démarrer la vibration du contrôleur gauche
