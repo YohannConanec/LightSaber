@@ -33,9 +33,9 @@ public class Elevate : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z); // Déplace l'objet vers le haut
                 float delta = posOffset.y + decalage - transform.position.y; // Calcule la différence de hauteur actuelle
                 speed = initspeed * delta / initdeltaY; // Calcule la vitesse de déplacement en fonction de la différence de hauteur
-                if (speed < 0.0003f)
+                if (speed < 0.0008f)
                 {
-                    speed = 0.0003f; // Vitesse minimale pour éviter un arrêt complet
+                    speed = 0.0008f; // Vitesse minimale pour éviter un arrêt complet
                 }
             }
             else

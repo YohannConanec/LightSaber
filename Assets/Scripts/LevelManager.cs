@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        speed = 4;
+        speed = 4; //=4
     }
     private void Update()
     {

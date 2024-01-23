@@ -66,12 +66,16 @@ public class DestroyObjects : MonoBehaviour
             case "Resume":
                 // Désactive la pause dans le gestionnaire de menu
                 manager.GetComponent<MenuPauseManager>().PauseOff();
+                particles = GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
+                particles.transform.position = other.transform.position;
+                particles.Play();
                 break;
 
             // Cas où l'objet a le tag "GoToPrincipal"
             case "GoToPrincipal":
                 // Charge la scène du menu principal
                 SceneManager.LoadScene("Menu");
+                GlobalScore.Score = 0;
                 break;
 
             // Cas où l'objet a le tag "MenuPlay"
@@ -100,13 +104,16 @@ public class DestroyObjects : MonoBehaviour
 
             // Cas où l'objet a le tag "Retry"
             case "Retry":
+                particles = GameObject.Find("fire_pink").GetComponent<ParticleSystem>();
+                particles.transform.position = other.transform.position;
+                particles.Play();
                 // Réinitialise le score global et recharge la scène actuelle
                 GlobalScore.Score = 0;
                 Application.LoadLevel(Application.loadedLevel);
                 break;
 
             case "SelectNiveauMenu":
-                if(GameObject.Find("Select song").GetComponent<Elevate>().GetPhase() == 3)
+                if(GameObject.Find("Select song").GetComponent<Elevate>().GetPhase() == 2)
                 {
                     int id=other.GetComponent<Id>().getId();
 
